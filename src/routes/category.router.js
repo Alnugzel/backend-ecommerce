@@ -5,10 +5,12 @@ const {
 } = require("../controllers/category.controllers");
 const express = require("express");
 
+const { verifyJWT } = require("../utils/verify");
+
 const routerCategory = express.Router();
 
-routerCategory.route("/").get(getAll).post(create);
+routerCategory.route("/").get(getAll).post(verifyJWT, create);
 
-routerCategory.route("/:id").delete(remove);
+routerCategory.route("/:id").delete(verifyJWT, remove);
 
 module.exports = routerCategory;
