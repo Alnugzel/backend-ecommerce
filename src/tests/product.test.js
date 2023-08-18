@@ -68,7 +68,7 @@ test("GET ONE -> 'URL_PRODUCTS/:id', should resturn status code 200 and res.body
 
 test("PUT -> 'URL_PRODUCTS/:id', should resturn status code 200 and res.body.title = productUpdate.title", async () => {
   const productUpdate = {
-    title: "Samsung oled 55",
+    title: "Whiskas Carne",
   };
 
   const res = await request(app)
