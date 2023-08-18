@@ -5,13 +5,14 @@ const Product = sequelize.define("product", {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   price: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL,
     allowNull: false,
   },
 

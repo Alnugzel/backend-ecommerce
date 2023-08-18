@@ -22,7 +22,6 @@ test("Get -> 'URL_USERS', should return status code 200 and res.body.length === 
     .get(URL_USERS)
     .set("Authorization", `Bearer ${TOKEN}`);
 
-  console.log(res.body);
   expect(res.status).toBe(200);
   expect(res.body).toBeDefined();
   expect(res.body).toHaveLength(1);
