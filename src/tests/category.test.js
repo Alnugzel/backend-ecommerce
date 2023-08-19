@@ -16,7 +16,6 @@ beforeAll(async () => {
   const res = await request(app).post(`${URL_USERS}/login`).send(user);
 
   TOKEN = res.body.token;
-  console.log(TOKEN);
 });
 
 test(`POST -> '${URL_CATEGORIES}' should return status code 201 req.body === category.name`, async () => {
@@ -36,7 +35,7 @@ test(`POST -> '${URL_CATEGORIES}' should return status code 201 req.body === cat
   expect(res.body.name).toBe(category.name);
 });
 
-test("Get -> 'URL_CATEGORIES', should return status code 200 and res.body.length === 1", async () => {
+test("GET -> 'URL_CATEGORIES', should return status code 200 and res.body.length === 1", async () => {
   const res = await request(app).get(URL_CATEGORIES);
 
   expect(res.status).toBe(200);

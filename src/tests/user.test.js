@@ -14,10 +14,9 @@ beforeAll(async () => {
   const res = await request(app).post(`${URL_USERS}/login`).send(user);
 
   TOKEN = res.body.token;
-  console.log(TOKEN);
 });
 
-test("Get -> 'URL_USERS', should return status code 200 and res.body.length === 1", async () => {
+test("GET -> 'URL_USERS', should return status code 200 and res.body.length === 1", async () => {
   const res = await request(app)
     .get(URL_USERS)
     .set("Authorization", `Bearer ${TOKEN}`);
@@ -72,6 +71,16 @@ test("POST -> 'URL_USERS/login', should return status code 200, res.body.email =
   expect(res.body).toBeDefined();
   expect(res.body.user.email).toBe(user.email);
   expect(res.body.token).toBeDefined();
+});
+
+test("POST -> 'URL_USERS/login', should return status code 401", async () => {
+  const user = {
+    email: "angel@angel.com",
+    password: "invalid password",
+  };
+  const res = await request(app).post(`${URL_USERS}/login`).send(user);
+
+  expect(res.status).toBe(401);
 });
 
 test("DELETE -> 'URL_USERS/:id', should return status code 204 ", async () => {
