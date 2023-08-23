@@ -50,8 +50,8 @@ const setImage = catchError(async (req, res) => {
   const product = await Product.findByPk(id);
   if (!product) return res.sendStatus(404);
   await product.setProductImgs(req.body);
-  const image = product.getProductsImgs();
-  return res.json(image);
+  const images = await product.getProductImgs();
+  return res.json(images);
 });
 
 module.exports = {
